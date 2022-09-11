@@ -1,7 +1,6 @@
 package discovery
 
 import (
-	"fmt"
 	"io"
 	"io/fs"
 	"os"
@@ -30,7 +29,6 @@ func GetProfiles(excludePartitions ...string) v.Result[[]Profile, error] {
 	profiles := make([]Profile, 0)
 	for _, part := range partitions.Value() {
 		root := env.PathJoin(part.Mountpoint+"/", env.VendorName)
-		fmt.Println(env.PathJoin(root, "version.txt"))
 		if env.FileExist(root) {
 			rootfs := os.DirFS(root)
 			if _, err := fs.Stat(rootfs, "version.txt"); !os.IsNotExist(err) {

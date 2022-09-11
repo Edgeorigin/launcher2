@@ -12,6 +12,7 @@ type Filename interface {
 	Underline
 	Extname() Extname
 	String() string
+	ToUnderline() Underline
 }
 
 type filename struct {
@@ -25,6 +26,10 @@ func (f *filename) Extname() Extname {
 
 func (f *filename) String() string {
 	return fmt.Sprintf("Filename{%s,%s}", f.Underline.String(), f.extname.String())
+}
+
+func (f *filename) ToUnderline() Underline {
+	return f.Underline
 }
 
 var (

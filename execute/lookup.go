@@ -47,7 +47,7 @@ func Lookup(rootPath string) v.Result[LookupResult, error] {
 			if IsExecExt(filepath.Ext(i.Name())) {
 				f = append(
 					f,
-					env.PathResolve(env.PathJoin(rootPath, i.Name())),
+					env.PathJoin(rootPath, i.Name()),
 				)
 			}
 		}

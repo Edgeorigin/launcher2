@@ -21,6 +21,7 @@ type Underline interface {
 	Author() string
 	Category() v.Option[string]
 	String() string
+	String3() string
 }
 
 type underline struct {
@@ -44,6 +45,10 @@ func (s *underline) Author() string {
 
 func (s *underline) Category() v.Option[string] {
 	return s.category
+}
+
+func (s *underline) String3() string {
+	return fmt.Sprintf("%s-%s-%s", s.name, s.version, s.author)
 }
 
 func (s *underline) String() string {
