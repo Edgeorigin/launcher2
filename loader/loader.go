@@ -30,10 +30,13 @@ func (a ErrorArray) Error() string {
 	return fmt.Sprintf("errors: %#v", a)
 }
 
-func NewPackageLoader(path string, system *discovery.System) *PackageLoader {
+func NewPackageLoader(path string, filename underline.Filename, system *discovery.System) *PackageLoader {
 	profile := system.Profile.Value()
-	filename := profile.Packages[path]
 	return &PackageLoader{path, filename, system, profile}
+}
+
+func LoadPackage(path string, filename underline.Filename, system *discovery.System) v.Future[v.Result[v.Unit, error]] {
+	return NewPackageLoader(path, filename, system).Load()
 }
 
 func LoadSystem(system *discovery.System) v.Result[v.Unit, error] {
@@ -43,9 +46,9 @@ func LoadSystem(system *discovery.System) v.Result[v.Unit, error] {
 	fmt.Println(profile)
 
 	for k := range profile.Packages {
-		loader := NewPackageLoader(k, system)
+		loader := NewPackageLoader(k, system.Profile.Value().Packages[k], system)
 		fmt.Println(loader)
-		ret := loader.Execute().Await()
+		ret := loader.Load().Await()
 		if ret.Errored() {
 			return ret
 		}
@@ -161,7 +164,7 @@ func (loader *PackageLoader) postClean(scripts execute.LookupResult) v.Result[v.
 	return v.Ok[v.Unit, error](v.UnitVal)
 }
 
-func (loader *PackageLoader) Execute() v.Future[v.Result[v.Unit, error]] {
+func (loader *PackageLoader) Load() v.Future[v.Result[v.Unit, error]] {
 	return v.Async(func() v.Result[v.Unit, error] {
 		fmt.Println("Flags", loader.filename.Extname().Full(), loader.filename.Extname())
 		// Normal
