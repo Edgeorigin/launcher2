@@ -12,6 +12,8 @@
 ## explicit; go 1.14
 # github.com/go-ole/go-ole v1.2.6
 ## explicit; go 1.12
+github.com/go-ole/go-ole
+github.com/go-ole/go-ole/oleutil
 # github.com/hashicorp/errwrap v1.0.0
 ## explicit
 # github.com/hashicorp/go-multierror v1.1.1
@@ -33,16 +35,26 @@ github.com/mcuadros/go-version
 ## explicit; go 1.14
 # github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c
 ## explicit; go 1.14
+github.com/power-devops/perfstat
+# github.com/saintfish/chardet v0.0.0-20120816061221-3af4cd4741ca
+## explicit
 # github.com/shirou/gopsutil/v3 v3.22.8
 ## explicit; go 1.15
+github.com/shirou/gopsutil/v3/disk
+github.com/shirou/gopsutil/v3/internal/common
 # github.com/ulikunitz/xz v0.5.10
 ## explicit; go 1.12
 # github.com/yusufpapurcu/wmi v1.2.2
 ## explicit; go 1.16
+github.com/yusufpapurcu/wmi
 # go4.org v0.0.0-20200411211856-f5505b9728dd
 ## explicit; go 1.13
 # golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a
 ## explicit; go 1.17
+golang.org/x/sys/internal/unsafeheader
+golang.org/x/sys/unix
+golang.org/x/sys/windows
+golang.org/x/sys/windows/registry
 # golang.org/x/text v0.3.7
 ## explicit; go 1.17
 golang.org/x/text/encoding
