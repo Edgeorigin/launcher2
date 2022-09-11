@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 	"sync"
 
+	"github.com/hydrati/plugin-loader/env"
 	v "github.com/hydrati/plugin-loader/utils/container"
 )
 
@@ -46,23 +47,11 @@ func Lookup(rootPath string) v.Result[LookupResult, error] {
 			if IsExecExt(filepath.Ext(i.Name())) {
 				f = append(
 					f,
-					PathResolve(PathJoin(rootPath, i.Name())),
+					env.PathResolve(env.PathJoin(rootPath, i.Name())),
 				)
 			}
 		}
 	}
 
 	return v.Ok[LookupResult, error](f)
-}
-
-func PathJoin(path ...string) string {
-	return filepath.Clean(filepath.Join(path...))
-}
-
-func PathResolve(path string) string {
-	if filepath.IsAbs(path) {
-		return path
-	}
-
-	return PathJoin(v.Must(os.Getwd()), path)
 }

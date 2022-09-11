@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"sync"
 
+	"github.com/hydrati/plugin-loader/env"
 	v "github.com/hydrati/plugin-loader/utils/container"
 )
 
@@ -69,7 +70,7 @@ func Execute(path string) v.Future[v.Result[ExecuteOutput, *exec.ExitError]] {
 			return v.Ok[ExecuteOutput, *exec.ExitError](ExecuteOutput{Output: nil, Ignored: true})
 		}
 
-		r := executor.Value().ExecuteScript(PathResolve(path)).Await()
+		r := executor.Value().ExecuteScript(env.PathResolve(path)).Await()
 		if r.Errored() {
 			return v.ToErr[ExecuteOutput](r)
 		}
@@ -78,12 +79,8 @@ func Execute(path string) v.Future[v.Result[ExecuteOutput, *exec.ExitError]] {
 	})
 }
 
-func FindBin(name string) string {
-	return v.Must(exec.LookPath(name))
-}
-
 func wcsExecutor(path string) v.Result[[]byte, *exec.ExitError] {
-	o, err := exec.Command(FindBin("PECMD"), "LOAD", path).Output()
+	o, err := exec.Command(env.FindBin("PECMD"), "LOAD", path).Output()
 	if err != nil {
 		return v.Err[[]byte](err.(*exec.ExitError))
 	}
@@ -92,7 +89,7 @@ func wcsExecutor(path string) v.Result[[]byte, *exec.ExitError] {
 }
 
 func cmdExecutor(path string) v.Result[[]byte, *exec.ExitError] {
-	o, err := exec.Command(FindBin("cmd"), "/c", path).Output()
+	o, err := exec.Command(env.FindBin("cmd"), "/c", path).Output()
 	if err != nil {
 		return v.Err[[]byte](err.(*exec.ExitError))
 	}
