@@ -2,7 +2,7 @@
 
 > **该项目仍处于 WIP 阶段，不建议用于生产环境，否则后果自负！**
 
-一个从零实现的 [**Edgeless**](https://github.com/EdgelessPE/Edgeless) 替代实现, 使用 Go 编写.
+一个从零编写的 [**Edgeless**](https://github.com/EdgelessPE/Edgeless) 替代实现, 使用 Go 编写.
 
 
 ## Goals
