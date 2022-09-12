@@ -9,7 +9,7 @@ package main
 // )
 
 import (
-	"fmt"
+	_ "fmt"
 
 	"github.com/hydrati/plugin-loader/discovery"
 	_ "github.com/hydrati/plugin-loader/env"
@@ -18,8 +18,5 @@ import (
 
 func main() {
 	system := discovery.GetSystem()
-	r := loader.LoadSystem(system)
-	if r.Errored() {
-		fmt.Println(r.Error().Value())
-	}
+	loader.LoadSystem(system).Value()
 }
