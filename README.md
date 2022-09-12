@@ -1,5 +1,7 @@
 # `launcher(2)`
 
+[简体中文](./README-zh_CN.md)
+
 > **The project is still in the WIP stage and is not recommended for production environments, otherwise do it at your own risk!**
 
 The Alternative Implementation of [**Edgeless**](https://github.com/EdgelessPE/Edgeless), written in Go from scratch.
