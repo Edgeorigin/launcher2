@@ -2,7 +2,7 @@
 
 > **The project is still in the WIP stage and is not recommended for production environments, otherwise do it at your own risk!**
 
-The Alternative Implementation of **Edgeless**, written in Go from scratch.
+The Alternative Implementation of [**Edgeless**](https://github.com/EdgelessPE/Edgeless), written in Go from scratch.
 
 
 ## Goals
@@ -14,3 +14,5 @@ The Alternative Implementation of **Edgeless**, written in Go from scratch.
 - [ ] **Edgeless Profile Options** Loader
 - [ ] **Edgeless Protocol** Client
 - [ ] **Edgeless** Image OTA
+
+
