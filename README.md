@@ -1,7 +1,16 @@
-# plugin-isolation-loader
+# `launcher(2)`
 
-## 目录结构
-- X:\ProgramFiles\Edgeless
-  - plugin_isolation
-    - {session id}
-    - session.db
+> **The project is still in the WIP stage and is not recommended for production environments, otherwise do it at your own risk!**
+
+The Alternative Implementation of **Edgeless**, written in Go from scratch.
+
+
+## Goals
+- [x] **Edgeless** Profile & System Discovery
+- [x] **Edgeless Plugin (v1)** Discovery & Resolve
+- [x] **Edgeless Plugin (v1)** Normal Loader
+- [ ] **Edgeless Plugin (v1)** Localboost Loader
+- [ ] **Edgeless Plugin (v1)** Hot Loader
+- [ ] **Edgeless Profile Options** Loader
+- [ ] **Edgeless Protocol** Client
+- [ ] **Edgeless** Image OTA
